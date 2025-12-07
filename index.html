@@ -1,1 +1,408 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dazzlytime - Pop Your Style!</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Inter & Playfair Display for structure, but feel changes with color) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        dazzly: {
+                            black: '#2D1B4E', // Mengganti Hitam pekat dengan Deep Grape/Ungu Tua agar tidak kaku
+                            beige: '#FFF9C4', // Mengganti Krem dengan Sunny Lemon Yellow (Ceria!)
+                            tan: '#00D2D3',   // Mengganti Coklat dengan Cyan/Tosca cerah
+                            red: '#FF007F',   // Mengganti Merah Marun dengan Hot Pink / Fuchsia (Colorpop banget!)
+                            pink: '#FF9F43'   // Mengganti Soft Pink dengan Vivid Orange
+                        }
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Hide scrollbar for clean look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-dazzly-black bg-white antialiased selection:bg-dazzly-red selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b-4 border-dazzly-beige transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center md:hidden">
+                    <button onclick="toggleMenu()" class="text-dazzly-black hover:text-dazzly-red focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center justify-center md:justify-start w-full md:w-auto">
+                    <a href="#" class="font-serif text-3xl font-bold tracking-tight text-dazzly-red hover:text-dazzly-tan transition-colors">
+                        dazzlytime
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#new-arrival" class="text-sm font-bold text-gray-600 hover:text-dazzly-red transition uppercase tracking-wide">New Arrival</a>
+                    <a href="#best-seller" class="text-sm font-bold text-gray-600 hover:text-dazzly-red transition uppercase tracking-wide">Best Seller</a>
+                    <a href="#instagram" class="text-sm font-bold text-gray-600 hover:text-dazzly-red transition uppercase tracking-wide">Lookbook</a>
+                </div>
+
+                <!-- Icons -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <button class="hover:text-dazzly-red transition transform hover:scale-110"><i data-lucide="search" class="w-6 h-6"></i></button>
+                    <button class="hover:text-dazzly-red transition relative transform hover:scale-110">
+                        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-dazzly-red text-white text-[11px] font-bold w-5 h-5 flex items-center justify-center rounded-full opacity-0 transition-opacity border-2 border-white">0</span>
+                    </button>
+                </div>
+                
+                 <!-- Mobile Cart Icon -->
+                 <div class="flex items-center md:hidden absolute right-4">
+                    <button class="hover:text-dazzly-red transition">
+                        <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#new-arrival" class="block px-3 py-3 text-base font-bold text-gray-800 hover:bg-dazzly-beige hover:text-dazzly-red rounded-md">New Arrival</a>
+                <a href="#best-seller" class="block px-3 py-3 text-base font-bold text-gray-800 hover:bg-dazzly-beige hover:text-dazzly-red rounded-md">Best Seller</a>
+                <a href="#instagram" class="block px-3 py-3 text-base font-bold text-gray-800 hover:bg-dazzly-beige hover:text-dazzly-red rounded-md">Lookbook</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20">
+        <div class="relative w-full h-[600px] md:h-[700px] overflow-hidden bg-dazzly-beige">
+            <!-- Background Image -->
+            <!-- Menggunakan gambar yang lebih bright/colorful -->
+            <img src="https://images.unsplash.com/photo-1552664688-cf412ec27db2?q=80&w=2574&auto=format&fit=crop" alt="Colorful Fashion" class="absolute inset-0 w-full h-full object-cover object-center opacity-90 mix-blend-multiply">
+            
+            <div class="absolute inset-0 bg-gradient-to-r from-dazzly-beige/80 to-transparent"></div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 h-full flex items-center justify-start sm:px-6 lg:px-8">
+                <div class="max-w-xl animate-fade-in-up p-6 md:p-0">
+                    <span class="inline-block py-2 px-4 bg-dazzly-red text-white rounded-full text-xs font-bold tracking-wider uppercase mb-4 shadow-lg transform -rotate-2">New Drop 2025! ✨</span>
+                    <h1 class="text-5xl md:text-7xl font-serif font-bold leading-tight mb-6 text-dazzly-black drop-shadow-sm">
+                        Be Bold. <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-dazzly-red to-dazzly-pink">Be Colorful.</span>
+                    </h1>
+                    <p class="text-xl text-gray-800 mb-8 font-medium bg-white/50 backdrop-blur-sm p-4 rounded-lg inline-block">
+                        Tas kekinian yang bikin harimu makin seru. <br>Siap tampil beda hari ini?
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#best-seller" class="px-10 py-4 bg-dazzly-black text-white font-bold text-sm tracking-widest hover:bg-dazzly-red hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all duration-200 transform hover:-translate-y-1 border-2 border-transparent">
+                            SHOP NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / Values -->
+    <section class="py-12 bg-dazzly-beige border-b-4 border-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 bg-white rounded-2xl shadow-[8px_8px_0px_0px_rgba(255,200,50,0.5)] border-2 border-yellow-200 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="bg-dazzly-beige w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-dazzly-black">
+                        <i data-lucide="star" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-2 text-dazzly-black">Super Quality</h3>
+                    <p class="text-sm text-gray-600">Bahan premium, warna awet, & jahitan rapi.</p>
+                </div>
+                <div class="p-6 bg-white rounded-2xl shadow-[8px_8px_0px_0px_rgba(255,0,127,0.2)] border-2 border-pink-100 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="bg-pink-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-dazzly-red">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-2 text-dazzly-red">Fun Design</h3>
+                    <p class="text-sm text-gray-600">Model tas yang unik dan bikin kamu stand out.</p>
+                </div>
+                <div class="p-6 bg-white rounded-2xl shadow-[8px_8px_0px_0px_rgba(0,210,211,0.3)] border-2 border-cyan-100 hover:transform hover:-translate-y-2 transition duration-300">
+                    <div class="bg-cyan-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 text-dazzly-tan">
+                        <i data-lucide="rocket" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-2 text-dazzly-tan">Flash Shipping</h3>
+                    <p class="text-sm text-gray-600">Kirim hari ini, sampai secepat kilat!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Seller Section -->
+    <section id="best-seller" class="py-20 bg-white relative">
+        <!-- Decorative blobs -->
+        <div class="absolute top-10 left-0 w-32 h-32 bg-dazzly-beige rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute top-10 right-0 w-32 h-32 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-dazzly-red font-bold tracking-wider uppercase text-sm mb-2 block">Community Favorites</span>
+                <h2 class="text-4xl font-serif font-black mb-3 text-dazzly-black">Pop Picks! 💖</h2>
+                <p class="text-gray-500">Item paling laris yang wajib kamu punya.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+                
+                <!-- Product 1 -->
+                <div class="group relative">
+                    <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 relative mb-4 shadow-md border-2 border-transparent group-hover:border-dazzly-beige transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=1974&auto=format&fit=crop" alt="Essential Beige Tote" class="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-dazzly-black text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full">Best Seller</span>
+                        <button onclick="addToCart()" class="absolute bottom-4 right-4 bg-white p-3 rounded-full shadow-xl translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-dazzly-red hover:text-white hover:rotate-90">
+                            <i data-lucide="plus" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-bold text-dazzly-black"><a href="#" class="hover:text-dazzly-red">Essential Canvas Tote</a></h3>
+                    <div class="flex justify-between items-center mt-1">
+                        <p class="text-sm text-gray-500">Khaki / Beige</p>
+                        <p class="text-base font-bold text-dazzly-red">IDR 189.000</p>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group relative">
+                    <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 relative mb-4 shadow-md border-2 border-transparent group-hover:border-pink-200 transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=2535&auto=format&fit=crop" alt="Felly Shoulder Bag Red" class="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute bottom-0 left-0 w-full bg-dazzly-red/90 text-white backdrop-blur-sm p-2 text-center text-xs font-bold translate-y-full group-hover:translate-y-0 transition-transform">
+                            🔥 Selling Fast!
+                        </div>
+                        <button onclick="addToCart()" class="absolute bottom-4 right-4 bg-white p-3 rounded-full shadow-xl translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-dazzly-red hover:text-white hover:rotate-90">
+                            <i data-lucide="plus" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-bold text-dazzly-black"><a href="#" class="hover:text-dazzly-red">Felly Pop Shoulder Bag</a></h3>
+                    <div class="flex justify-between items-center mt-1">
+                        <p class="text-sm text-gray-500">Hot Red</p>
+                        <p class="text-base font-bold text-dazzly-red">IDR 215.000</p>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group relative">
+                    <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 relative mb-4 shadow-md border-2 border-transparent group-hover:border-purple-200 transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=2669&auto=format&fit=crop" alt="Dyla Shoulder Bag" class="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
+                        <button onclick="addToCart()" class="absolute bottom-4 right-4 bg-white p-3 rounded-full shadow-xl translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-dazzly-red hover:text-white hover:rotate-90">
+                            <i data-lucide="plus" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-bold text-dazzly-black"><a href="#" class="hover:text-dazzly-red">Dyla Slouchy Bag</a></h3>
+                    <div class="flex justify-between items-center mt-1">
+                        <p class="text-sm text-gray-500">Deep Choco</p>
+                        <p class="text-base font-bold text-dazzly-red">IDR 199.000</p>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group relative">
+                    <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl bg-gray-100 relative mb-4 shadow-md border-2 border-transparent group-hover:border-dazzly-pink transition-all duration-300">
+                        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=2538&auto=format&fit=crop" alt="Multi Pocket Bag" class="h-full w-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
+                         <span class="absolute top-3 left-3 bg-dazzly-pink text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full">New</span>
+                        <button onclick="addToCart()" class="absolute bottom-4 right-4 bg-white p-3 rounded-full shadow-xl translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 hover:bg-dazzly-red hover:text-white hover:rotate-90">
+                            <i data-lucide="plus" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                    <h3 class="text-lg font-bold text-dazzly-black"><a href="#" class="hover:text-dazzly-red">Cargo Pocket Tote</a></h3>
+                    <div class="flex justify-between items-center mt-1">
+                        <p class="text-sm text-gray-500">Coral Pink</p>
+                        <p class="text-base font-bold text-dazzly-red">IDR 205.000</p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#" class="inline-block bg-dazzly-beige px-8 py-3 rounded-full text-sm font-bold text-dazzly-black hover:bg-dazzly-tan hover:text-white transition-all transform hover:scale-105 shadow-md">
+                    VIEW ALL COLLECTIONS ➜
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lookbook / Instagram Feed Replica -->
+    <section id="instagram" class="py-16 bg-gradient-to-b from-white to-pink-50">
+        <div class="flex flex-col items-center justify-center mb-10">
+            <div class="bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 p-1 rounded-full mb-3">
+                <div class="bg-white p-1 rounded-full">
+                    <i data-lucide="instagram" class="w-6 h-6 text-dazzly-black"></i>
+                </div>
+            </div>
+            <h2 class="font-serif text-3xl font-black text-dazzly-black">@dazzlytime</h2>
+            <p class="text-sm text-dazzly-red font-medium mt-1">#DazzlyPopSquad</p>
+        </div>
+
+        <!-- Instagram Grid Layout -->
+        <div class="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4 px-2 md:px-4">
+            <!-- Item 1 -->
+            <div class="relative group aspect-square overflow-hidden cursor-pointer rounded-xl">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2670&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-dazzly-red/40 text-white transition">
+                    <i data-lucide="heart" class="w-8 h-8 fill-current animate-bounce"></i>
+                </div>
+            </div>
+             <!-- Item 2 -->
+             <div class="relative group aspect-square overflow-hidden cursor-pointer rounded-xl">
+                <img src="https://images.unsplash.com/photo-1575204015370-13783a54b35f?q=80&w=2574&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                 <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-dazzly-tan/40 text-white transition">
+                    <i data-lucide="heart" class="w-8 h-8 fill-current"></i>
+                </div>
+            </div>
+             <!-- Item 3 -->
+             <div class="relative group aspect-square overflow-hidden cursor-pointer rounded-xl">
+                <img src="https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?q=80&w=2563&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            </div>
+             <!-- Item 4 -->
+             <div class="relative group aspect-square overflow-hidden cursor-pointer rounded-xl">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            </div>
+             <!-- Item 5 -->
+             <div class="relative group aspect-square overflow-hidden cursor-pointer rounded-xl">
+                <img src="https://images.unsplash.com/photo-1605763240004-7e93b172d754?q=80&w=2574&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            </div>
+             <!-- Item 6 -->
+             <div class="relative group aspect-square overflow-hidden cursor-pointer rounded-xl">
+                <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=2671&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dazzly-black text-white pt-16 pb-8 border-t-8 border-dazzly-red">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-1">
+                    <span class="font-serif text-3xl font-black tracking-tight mb-4 block text-dazzly-beige">dazzlytime</span>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Mewarnai harimu dengan koleksi tas yang unik, berani, dan penuh gaya.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider text-dazzly-red">Shop</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-dazzly-tan transition">New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-dazzly-tan transition">Best Sellers</a></li>
+                        <li><a href="#" class="hover:text-dazzly-tan transition">Tote Bags</a></li>
+                        <li><a href="#" class="hover:text-dazzly-tan transition">Shoulder Bags</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider text-dazzly-red">Help</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="#" class="hover:text-dazzly-tan transition">Shipping & Returns</a></li>
+                        <li><a href="#" class="hover:text-dazzly-tan transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-dazzly-tan transition">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4 text-sm uppercase tracking-wider text-dazzly-red">Stay Updated</h4>
+                    <div class="flex flex-col space-y-3">
+                        <input type="email" placeholder="Email kamu disini..." class="bg-white/10 border border-gray-600 text-white text-sm px-4 py-3 focus:ring-2 focus:ring-dazzly-red rounded-lg placeholder-gray-400">
+                        <button class="bg-dazzly-red text-white px-4 py-3 text-sm font-bold hover:bg-white hover:text-dazzly-red transition rounded-lg">SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+                <p>&copy; 2025 Dazzlytime. Colorful vibes only.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-dazzly-black border-2 border-dazzly-red text-white px-6 py-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(255,0,127,1)] transition-all duration-300 translate-y-20 opacity-0 z-50 flex items-center gap-3">
+        <i data-lucide="party-popper" class="w-6 h-6 text-dazzly-beige"></i>
+        <span class="text-sm font-bold">Yay! Added to cart!</span>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.add('bg-white/95');
+                navbar.classList.remove('py-2');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.remove('bg-white/95');
+                navbar.classList.add('py-2');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Add to Cart Logic
+        let cartCount = 0;
+        const cartCountEl = document.getElementById('cart-count');
+        const toast = document.getElementById('toast');
+        let toastTimeout;
+
+        function addToCart() {
+            // Update Count
+            cartCount++;
+            cartCountEl.innerText = cartCount;
+            cartCountEl.classList.remove('opacity-0');
+            
+            // Animation for Badge
+            cartCountEl.classList.add('scale-125');
+            setTimeout(() => cartCountEl.classList.remove('scale-125'), 200);
+
+            // Show Toast
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            // Hide Toast after 3s
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
